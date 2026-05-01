@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.StudySessionPage"
+             BackgroundColor="#F7F9FB"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Top Nav Bar -->
+        <Grid Grid.Row="0" Padding="16,55,16,12" ColumnDefinitions="Auto,*,Auto" BackgroundColor="#F7F9FB">
+            <Border Grid.Column="0" StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                    BackgroundColor="Transparent" WidthRequest="40" HeightRequest="40">
+                <Label Text="&#x2190;" FontSize="22" TextColor="#2563EB"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+            <Label Grid.Column="1" Text="Flash Learn" FontSize="20" FontAttributes="Bold"
+                   FontFamily="OpenSansSemibold" VerticalTextAlignment="Center"
+                   Margin="12,0,0,0" TextColor="#111827"/>
+            <Border Grid.Column="2" StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                    BackgroundColor="{StaticResource Primary}" WidthRequest="40" HeightRequest="40">
+                <Label Text="V" FontSize="16" FontAttributes="Bold" TextColor="White"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            </Border>
+        </Grid>
+
+        <!-- Main Content -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,0,20,20" Spacing="20">
+
+                <!-- Session Header -->
+                <Grid ColumnDefinitions="*,Auto" Margin="0,4,0,0">
+                    <VerticalStackLayout Grid.Column="0" Spacing="2">
+                        <Label Text="CURRENT SESSION" FontSize="11" FontAttributes="Bold"
+                               TextColor="#6B7280" CharacterSpacing="1.5"/>
+                        <Label x:Name="DeckTitleLabel" Text="" FontSize="24" FontAttributes="Bold"
+                               TextColor="#111827" FontFamily="OpenSansSemibold"/>
+                    </VerticalStackLayout>
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                            BackgroundColor="#DCFCE7" Padding="14,8" VerticalOptions="Center">
+                        <HorizontalStackLayout Spacing="6">
+                            <Label Text="&#x2605;" FontSize="13" TextColor="#16A34A"
+                                   VerticalTextAlignment="Center"/>
+                            <Label x:Name="PointsBadgeLabel" Text="+0 Points" FontSize="14"
+                                   FontAttributes="Bold" TextColor="#16A34A"
+                                   VerticalTextAlignment="Center"/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+
+                <!-- Progress Bar -->
+                <Grid>
+                    <BoxView HeightRequest="6" BackgroundColor="#E5E7EB"
+                             HorizontalOptions="Fill" CornerRadius="3"/>
+                    <BoxView x:Name="ProgressBarFill" HeightRequest="6"
+                             BackgroundColor="#2563EB" HorizontalOptions="Start"
+                             WidthRequest="0" CornerRadius="3"/>
+                </Grid>
+
+                <!-- Card Counter -->
+                <Label x:Name="CardCounterLabel" Text="Card 1 of 1"
+                       FontSize="13" TextColor="#6B7280"
+                       HorizontalTextAlignment="Center" Margin="0,-10,0,0"/>
+
+                <!-- Flash Card -->
+                <Border StrokeShape="RoundRectangle 24" StrokeThickness="0"
+                        BackgroundColor="White" Padding="28,32" MinimumHeightRequest="260">
+                    <Border.Shadow>
+                        <Shadow Brush="#00000020" Offset="0,4" Radius="20" Opacity="0.08"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+
+                        <!-- Question badge -->
+                        <Border StrokeShape="RoundRectangle 12" StrokeThickness="0"
+                                BackgroundColor="#EFF6FF" Padding="12,5"
+                                HorizontalOptions="Center">
+                            <Label Text="QUESTION" FontSize="10" FontAttributes="Bold"
+                                   TextColor="#2563EB" CharacterSpacing="1.5"/>
+                        </Border>
+
+                        <!-- Question Text -->
+                        <Label x:Name="QuestionLabel" Text="" FontSize="22" FontAttributes="Bold"
+                               TextColor="#111827" HorizontalTextAlignment="Center"
+                               LineHeight="1.4"/>
+
+                        <!-- Divider -->
+                        <BoxView HeightRequest="1" BackgroundColor="#EAEEF1"
+                                 HorizontalOptions="Fill" Margin="0,4"/>
+
+                        <!-- Answer section (hidden until revealed) -->
+                        <VerticalStackLayout x:Name="AnswerSection" IsVisible="False" Spacing="12">
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0"
+                                    BackgroundColor="#F0FDF4" Padding="12,5"
+                                    HorizontalOptions="Center">
+                                <Label Text="ANSWER" FontSize="10" FontAttributes="Bold"
+                                       TextColor="#16A34A" CharacterSpacing="1.5"/>
+                            </Border>
+                            <Label x:Name="AnswerLabel" Text="" FontSize="17"
+                                   TextColor="#374151" HorizontalTextAlignment="Center"
+                                   LineHeight="1.5"/>
+                        </VerticalStackLayout>
+
+                        <!-- Tap to reveal -->
+                        <Border x:Name="RevealButton" StrokeShape="RoundRectangle 50"
+                                StrokeThickness="0" BackgroundColor="#F3F4F6"
+                                Padding="0,16" HorizontalOptions="Fill">
+                            <Label Text="Tap to reveal answer" FontSize="15"
+                                   TextColor="#6B7280" HorizontalTextAlignment="Center"/>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnRevealTapped"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Hard / Easy buttons -->
+                <Grid x:Name="RatingPanel" ColumnDefinitions="*,*" ColumnSpacing="14"
+                      IsVisible="False">
+
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 20"
+                            StrokeThickness="0" BackgroundColor="#FEF2F2" Padding="0,20">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Border StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                                    BackgroundColor="#FECACA" WidthRequest="40" HeightRequest="40"
+                                    HorizontalOptions="Center">
+                                <Label Text="&#x1F620;" FontSize="20"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Border>
+                            <Label Text="Hard" FontSize="16" FontAttributes="Bold"
+                                   TextColor="#DC2626" HorizontalTextAlignment="Center"/>
+                            <Label Text="See in 1 min" FontSize="12"
+                                   TextColor="#9CA3AF" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnHardTapped"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 20"
+                            StrokeThickness="0" BackgroundColor="#F0FDF4" Padding="0,20">
+                        <VerticalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Border StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                                    BackgroundColor="#BBF7D0" WidthRequest="40" HeightRequest="40"
+                                    HorizontalOptions="Center">
+                                <Label Text="&#x1F603;" FontSize="20"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"/>
+                            </Border>
+                            <Label Text="Easy" FontSize="16" FontAttributes="Bold"
+                                   TextColor="#16A34A" HorizontalTextAlignment="Center"/>
+                            <Label Text="See in 4 days" FontSize="12"
+                                   TextColor="#9CA3AF" HorizontalTextAlignment="Center"/>
+                        </VerticalStackLayout>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnEasyTapped"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Floating points popup (overlaid on card area) -->
+        <Label x:Name="PointsPopupLabel" Grid.Row="1"
+               Text="+10 ⭐" FontSize="30" FontAttributes="Bold"
+               HorizontalOptions="Center" VerticalOptions="Center"
+               IsVisible="False" ZIndex="10"
+               Shadow.Brush="#00000030" Shadow.Offset="0,2" Shadow.Radius="6"/>
+
+        <!-- Motivational toast (slides up from bottom of card area) -->
+        <Border x:Name="MotivationToast" Grid.Row="1"
+                StrokeShape="RoundRectangle 24" StrokeThickness="0"
+                BackgroundColor="#1E293B" Padding="20,12"
+                HorizontalOptions="Center" VerticalOptions="End"
+                Margin="0,0,0,24" IsVisible="False" ZIndex="10">
+            <HorizontalStackLayout Spacing="8">
+                <Label x:Name="MotivationEmoji" Text="🔥" FontSize="16"
+                       VerticalTextAlignment="Center"/>
+                <Label x:Name="MotivationLabel" Text="Keep going!"
+                       FontSize="15" FontAttributes="Bold" TextColor="White"
+                       VerticalTextAlignment="Center"/>
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Session Complete Overlay -->
+        <Grid x:Name="CompletionOverlay" Grid.RowSpan="3" IsVisible="False"
+              BackgroundColor="#F7F9FB">
+            <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center"
+                                 Spacing="20" Padding="40">
+                <Border StrokeShape="RoundRectangle 40" StrokeThickness="0"
+                        BackgroundColor="#DCFCE7" WidthRequest="80" HeightRequest="80"
+                        HorizontalOptions="Center">
+                    <Label Text="&#x1F3C6;" FontSize="36"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Border>
+                <Label Text="Session Complete!" FontSize="28" FontAttributes="Bold"
+                       TextColor="#111827" HorizontalTextAlignment="Center"
+                       FontFamily="OpenSansSemibold"/>
+                <Label x:Name="CompletionSubtitle" Text="" FontSize="16"
+                       TextColor="#6B7280" HorizontalTextAlignment="Center" LineHeight="1.5"/>
+                <Border StrokeShape="RoundRectangle 30" StrokeThickness="0"
+                        BackgroundColor="#2563EB" Padding="0,16" Margin="0,12">
+                    <Label Text="Back to Decks" FontSize="16" FontAttributes="Bold"
+                           TextColor="White" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnBackTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Border>
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

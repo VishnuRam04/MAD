@@ -1,0 +1,1 @@
+-v --force --timestamp=none --sign - /Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/bin/Debug/net8.0-ios/iossimulator-arm64/FlashLearn.app/libxamarin-dotnet-debug.dylib

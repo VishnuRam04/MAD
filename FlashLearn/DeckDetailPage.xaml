@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.DeckDetailPage"
+             BackgroundColor="#F7F9FB"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid Grid.Row="0" Padding="16,55,16,12" ColumnDefinitions="Auto,*,Auto" BackgroundColor="#F7F9FB">
+            <Border Grid.Column="0" StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                    BackgroundColor="Transparent" WidthRequest="40" HeightRequest="40">
+                <Label Text="&#x2190;" FontSize="22" TextColor="#0060AD"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Border>
+            <Label Grid.Column="1" x:Name="NavTitleLabel" Text="Deck" FontSize="20" FontAttributes="Bold"
+                   FontFamily="OpenSansSemibold" VerticalTextAlignment="Center" Margin="8,0,0,0"
+                   TextColor="#1E3A5F"/>
+            <HorizontalStackLayout Grid.Column="2" Spacing="8">
+                <Button Text="&#x25B6; Study" FontSize="13" FontAttributes="Bold"
+                        BackgroundColor="#16A34A" TextColor="White" CornerRadius="20"
+                        Padding="14,8" FontFamily="OpenSansSemibold"
+                        Clicked="OnStudyClicked"/>
+                <Button Text="+ Add Card" FontSize="13" FontAttributes="Bold"
+                        BackgroundColor="#0060AD" TextColor="White" CornerRadius="20"
+                        Padding="14,8" FontFamily="OpenSansSemibold"
+                        Clicked="OnAddCardClicked"/>
+            </HorizontalStackLayout>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,8,20,30" Spacing="16">
+
+                <VerticalStackLayout Spacing="6" Margin="0,0,0,8">
+                    <Label x:Name="DeckMetaLabel" Text="Category - 0 Cards" FontSize="11"
+                           FontAttributes="Bold" TextColor="#596063" CharacterSpacing="1"/>
+                    <Label x:Name="DeckTitleLabel" Text="" FontSize="28" FontAttributes="Bold"
+                           TextColor="#2D3337" FontFamily="OpenSansSemibold"/>
+                    <Label x:Name="DeckDescLabel" Text="" FontSize="14"
+                           TextColor="#596063" LineHeight="1.5"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout x:Name="CardsContainer" Spacing="14">
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid x:Name="ModalOverlay" Grid.RowSpan="2" IsVisible="False" BackgroundColor="Transparent">
+            <BoxView BackgroundColor="#2D3337" Opacity="0.3">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnModalCancelTapped"/>
+                </BoxView.GestureRecognizers>
+            </BoxView>
+
+            <Border StrokeShape="RoundRectangle 24" StrokeThickness="0"
+                    BackgroundColor="White" Padding="28"
+                    VerticalOptions="Center" HorizontalOptions="Fill"
+                    Margin="20" MaximumWidthRequest="500">
+                <VerticalStackLayout Spacing="20">
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                            <Label Text="Add New Card" FontSize="22" FontAttributes="Bold"
+                                   TextColor="#2D3337" FontFamily="OpenSansSemibold"/>
+                            <Label x:Name="ModalSubtitle" Text="" FontSize="13" TextColor="#596063"/>
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="&#x2715;" FontSize="20" TextColor="#596063"
+                               VerticalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnModalCancelTapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="QUESTION" FontSize="11" FontAttributes="Bold"
+                               TextColor="#596063" CharacterSpacing="1"/>
+                        <Border StrokeShape="RoundRectangle 16" StrokeThickness="0"
+                                BackgroundColor="#E3E9EC" Padding="16">
+                            <Editor x:Name="QuestionEditor" Placeholder="Enter the question or prompt..."
+                                    FontSize="15" TextColor="#2D3337" HeightRequest="80"
+                                    AutoSize="TextChanges" BackgroundColor="Transparent"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="ANSWER" FontSize="11" FontAttributes="Bold"
+                               TextColor="#596063" CharacterSpacing="1"/>
+                        <Border StrokeShape="RoundRectangle 16" StrokeThickness="0"
+                                BackgroundColor="#E3E9EC" Padding="16">
+                            <Editor x:Name="AnswerEditor" Placeholder="Enter the correct answer..."
+                                    FontSize="15" TextColor="#2D3337" HeightRequest="80"
+                                    AutoSize="TextChanges" BackgroundColor="Transparent"/>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    <!-- Buttons -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Border Grid.Column="0" StrokeShape="RoundRectangle 25"
+                                Stroke="#ACB3B7" StrokeThickness="1"
+                                BackgroundColor="White" Padding="0" HeightRequest="48">
+                            <Label Text="Cancel" FontSize="15" FontAttributes="Bold"
+                                   TextColor="#596063" HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnModalCancelTapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Border>
+                        <Button Grid.Column="1" x:Name="SubmitCardBtn" Text="Submit Card"
+                                FontSize="15" FontAttributes="Bold"
+                                BackgroundColor="#0060AD" TextColor="White"
+                                CornerRadius="25" HeightRequest="48"
+                                Clicked="OnSubmitCardClicked"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

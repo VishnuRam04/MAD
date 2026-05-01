@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.ProgressPage"
+             Title="Progress"
+             BackgroundColor="#EEF2FF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid Grid.Row="0" Padding="22,55,22,16" ColumnDefinitions="*,Auto" BackgroundColor="#EEF2FF">
+            <VerticalStackLayout Grid.Column="0" Spacing="3">
+                <Label Text="My Progress" FontSize="24" FontAttributes="Bold"
+                       FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray900}"/>
+                <Label Text="Track your learning journey" FontSize="14" TextColor="{StaticResource Gray500}"/>
+            </VerticalStackLayout>
+            <Border Grid.Column="1" StrokeShape="RoundRectangle 23" StrokeThickness="0"
+                    BackgroundColor="{StaticResource Primary}" WidthRequest="46" HeightRequest="46"
+                    VerticalOptions="Center">
+                <Grid>
+                    <Image x:Name="NavAvatarImage" IsVisible="False" Aspect="AspectFill"
+                           WidthRequest="46" HeightRequest="46"/>
+                    <Label x:Name="NavAvatar" Text="V" FontSize="19" FontAttributes="Bold" TextColor="White"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="0">
+
+                <Border StrokeShape="RoundRectangle 0" StrokeThickness="0" Margin="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2563EB" Offset="0.0"/>
+                            <GradientStop Color="#6D28D9" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid Padding="24,22,24,40">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="LEARNING JOURNEY" FontSize="11" FontAttributes="Bold"
+                                   CharacterSpacing="2" TextColor="#A5B4FC"/>
+                            <Label Text="Your Progress" FontSize="28" FontAttributes="Bold"
+                                   TextColor="White" FontFamily="OpenSansSemibold"/>
+                            <Label Text="Keep the momentum going — every card counts."
+                                   FontSize="13" TextColor="#BFDBFE" LineHeight="1.5"/>
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Padding="16,0,16,0"
+                      Margin="0,-24,0,0">
+
+                    <Border Grid.Column="0" StrokeShape="RoundRectangle 18" StrokeThickness="0"
+                            BackgroundColor="White" Padding="16">
+                        <Border.Shadow>
+                            <Shadow Brush="#00000020" Offset="0,4" Radius="16" Opacity="0.08"/>
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="6">
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0"
+                                    BackgroundColor="{StaticResource LightBlue}"
+                                    WidthRequest="40" HeightRequest="40">
+                                <Label Text="&#x2605;" FontSize="18" TextColor="{StaticResource Primary}"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Border>
+                            <Label x:Name="TotalPointsLabel" Text="0" FontSize="30"
+                                   FontAttributes="Bold" TextColor="{StaticResource Gray900}"
+                                   FontFamily="OpenSansSemibold"/>
+                            <Label Text="TOTAL POINTS" FontSize="10" FontAttributes="Bold"
+                                   CharacterSpacing="0.8" TextColor="{StaticResource Gray400}"/>
+                            <HorizontalStackLayout Spacing="3">
+                                <Label x:Name="PointsArrow" Text="&#x2197;" FontSize="12"
+                                       TextColor="{StaticResource SuccessGreen}"/>
+                                <Label x:Name="PointsChangeLabel" Text="+0 this week"
+                                       FontSize="11" FontAttributes="Bold"
+                                       TextColor="{StaticResource SuccessGreen}"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- Streak -->
+                    <Border Grid.Column="1" StrokeShape="RoundRectangle 18" StrokeThickness="0"
+                            BackgroundColor="White" Padding="16">
+                        <Border.Shadow>
+                            <Shadow Brush="#00000020" Offset="0,4" Radius="16" Opacity="0.08"/>
+                        </Border.Shadow>
+                        <VerticalStackLayout Spacing="6">
+                            <Border StrokeShape="RoundRectangle 12" StrokeThickness="0"
+                                    BackgroundColor="#DCFCE7"
+                                    WidthRequest="40" HeightRequest="40">
+                                <Label Text="&#x1F525;" FontSize="18"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Border>
+                            <HorizontalStackLayout Spacing="4" VerticalOptions="Center">
+                                <Label x:Name="StreakLabel" Text="0" FontSize="30"
+                                       FontAttributes="Bold" TextColor="{StaticResource Gray900}"
+                                       FontFamily="OpenSansSemibold"/>
+                                <Label Text="days" FontSize="13" TextColor="{StaticResource Gray500}"
+                                       VerticalTextAlignment="End" Margin="0,0,0,4"/>
+                            </HorizontalStackLayout>
+                            <Label Text="CURRENT STREAK" FontSize="10" FontAttributes="Bold"
+                                   CharacterSpacing="0.8" TextColor="{StaticResource Gray400}"/>
+                            <Label x:Name="PersonalBestLabel" Text="Best: 0 days"
+                                   FontSize="11" TextColor="{StaticResource Gray500}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Border StrokeShape="RoundRectangle 18" StrokeThickness="0"
+                        BackgroundColor="White" Padding="20" Margin="16,12,16,0">
+                    <Border.Shadow>
+                        <Shadow Brush="#00000020" Offset="0,4" Radius="16" Opacity="0.08"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="10">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Border Grid.Column="0" StrokeShape="RoundRectangle 12" StrokeThickness="0"
+                                    BackgroundColor="#F3F4F6" WidthRequest="40" HeightRequest="40">
+                                <Label Text="&#x1F393;" FontSize="18"
+                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Margin="12,0,0,0" Spacing="1">
+                                <Label Text="MASTERED CARDS" FontSize="10" FontAttributes="Bold"
+                                       CharacterSpacing="0.8" TextColor="{StaticResource Gray400}"/>
+                                <Label x:Name="MasteredLabel" Text="0" FontSize="22"
+                                       FontAttributes="Bold" TextColor="{StaticResource Gray900}"/>
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2" x:Name="MasteredPercentLabel"
+                                   Text="0%" FontSize="24" FontAttributes="Bold"
+                                   TextColor="{StaticResource Primary}"
+                                   VerticalTextAlignment="Center"/>
+                        </Grid>
+
+                        <Grid x:Name="MasteredProgressHost" HeightRequest="10" Margin="0,4,0,0"/>
+                        <Label x:Name="MasteredSubLabel" Text="of your total collection"
+                               FontSize="12" TextColor="{StaticResource Gray400}"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border StrokeShape="RoundRectangle 18" StrokeThickness="0"
+                        BackgroundColor="White" Padding="20" Margin="16,12,16,0">
+                    <Border.Shadow>
+                        <Shadow Brush="#00000020" Offset="0,4" Radius="16" Opacity="0.08"/>
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="16">
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                <Label Text="Study Activity" FontSize="17" FontAttributes="Bold"
+                                       TextColor="{StaticResource Gray900}"/>
+                                <Label Text="Cards reviewed per day" FontSize="12"
+                                       TextColor="{StaticResource Gray500}"/>
+                            </VerticalStackLayout>
+
+                            <Border Grid.Column="1" StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                                    BackgroundColor="{StaticResource Gray100}" Padding="4,4"
+                                    VerticalOptions="Center">
+                                <HorizontalStackLayout Spacing="0">
+                                    <Border x:Name="WeekToggle" StrokeShape="RoundRectangle 16"
+                                            StrokeThickness="0" BackgroundColor="{StaticResource Primary}"
+                                            Padding="14,6">
+                                        <Label Text="Week" FontSize="13" FontAttributes="Bold" TextColor="White">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnWeekToggle"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnWeekToggle"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+                                    <Border x:Name="MonthToggle" StrokeShape="RoundRectangle 16"
+                                            StrokeThickness="0" BackgroundColor="Transparent"
+                                            Padding="14,6">
+                                        <Label Text="Month" FontSize="13" TextColor="{StaticResource Gray500}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnMonthToggle"/>
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                        <Border.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnMonthToggle"/>
+                                        </Border.GestureRecognizers>
+                                    </Border>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </Grid>
+
+                        <Grid x:Name="ChartContainer" HeightRequest="120" Margin="0,4,0,0"/>
+
+                        <Grid x:Name="DayLabelsRow" ColumnDefinitions="*,*,*,*,*,*,*"/>
+
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout Padding="16,20,16,0" Spacing="12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                            <Label Text="Deck Performance" FontSize="17" FontAttributes="Bold"
+                                   TextColor="{StaticResource Gray900}"/>
+                            <Label Text="Accuracy per collection" FontSize="12"
+                                   TextColor="{StaticResource Gray500}"/>
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <VerticalStackLayout x:Name="PerformanceContainer" Spacing="10"/>
+                </VerticalStackLayout>
+
+                <BoxView HeightRequest="32" Color="Transparent"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>

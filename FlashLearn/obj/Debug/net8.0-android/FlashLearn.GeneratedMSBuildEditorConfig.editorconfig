@@ -1,0 +1,89 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0-android
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FlashLearn
+build_property.ProjectDir = /Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/AboutPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.AboutPage.xaml
+build_metadata.AdditionalFiles.TargetPath = AboutPage.xaml
+build_metadata.AdditionalFiles.RelativePath = AboutPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/DeckDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.DeckDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = DeckDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = DeckDetailPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/LoginPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.LoginPage.xaml
+build_metadata.AdditionalFiles.TargetPath = LoginPage.xaml
+build_metadata.AdditionalFiles.RelativePath = LoginPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/ProfilePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.ProfilePage.xaml
+build_metadata.AdditionalFiles.TargetPath = ProfilePage.xaml
+build_metadata.AdditionalFiles.RelativePath = ProfilePage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/ProgressPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.ProgressPage.xaml
+build_metadata.AdditionalFiles.TargetPath = ProgressPage.xaml
+build_metadata.AdditionalFiles.RelativePath = ProgressPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/RegisterPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.RegisterPage.xaml
+build_metadata.AdditionalFiles.TargetPath = RegisterPage.xaml
+build_metadata.AdditionalFiles.RelativePath = RegisterPage.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Colors.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Styles/Styles.xaml
+
+[/Users/vishnuram/Desktop/FlashCardMAD/FlashLearn/StudySessionPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FlashLearn.StudySessionPage.xaml
+build_metadata.AdditionalFiles.TargetPath = StudySessionPage.xaml
+build_metadata.AdditionalFiles.RelativePath = StudySessionPage.xaml

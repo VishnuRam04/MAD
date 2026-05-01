@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlashLearn.MainPage"
+             BackgroundColor="#EEF2FF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <Grid Grid.Row="0" Padding="22,55,22,16" ColumnDefinitions="*,Auto" BackgroundColor="#EEF2FF">
+            <VerticalStackLayout Grid.Column="0" Spacing="3">
+                <Label x:Name="GreetingLabel" Text="Good Morning 👋"
+                       FontSize="24" FontAttributes="Bold" FontFamily="OpenSansSemibold"
+                       TextColor="{StaticResource Gray900}"/>
+                <Label Text="Ready to level up today?" FontSize="14" TextColor="{StaticResource Gray500}"/>
+            </VerticalStackLayout>
+            <Border Grid.Column="1" StrokeShape="RoundRectangle 23" StrokeThickness="0"
+                    BackgroundColor="{StaticResource Primary}" WidthRequest="46" HeightRequest="46"
+                    VerticalOptions="Center">
+                <Grid>
+                    <Image x:Name="NavAvatarImage" IsVisible="False" Aspect="AspectFill"
+                           WidthRequest="46" HeightRequest="46"/>
+                    <Label x:Name="NavAvatar" Text="V" FontSize="19" FontAttributes="Bold" TextColor="White"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="22,0,22,40" Spacing="0">
+
+                <Border StrokeShape="RoundRectangle 24" StrokeThickness="0" Margin="0,0,0,24">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="#2563EB" Offset="0.0"/>
+                            <GradientStop Color="#6D28D9" Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid Padding="24,22" ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="6">
+                            <Label Text="YOUR PROGRESS" FontSize="11" FontFamily="OpenSansSemibold"
+                                   TextColor="#A5B4FC" CharacterSpacing="1.5"/>
+                            <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                                <Label x:Name="TotalDecksLabel" Text="0" FontSize="42"
+                                       FontAttributes="Bold" TextColor="White" LineHeight="1"/>
+                                <Label Text="Decks" FontSize="16" TextColor="#C7D2FE"
+                                       VerticalTextAlignment="End" Margin="0,0,0,8"/>
+                            </HorizontalStackLayout>
+                            <Border StrokeShape="RoundRectangle 20" StrokeThickness="0"
+                                    BackgroundColor="#FFFFFFFF" Padding="10,5"
+                                    HorizontalOptions="Start">
+                                <HorizontalStackLayout Spacing="6">
+                                    <Label Text="📝" FontSize="12"/>
+                                    <Label x:Name="AnsweredCardsLabel" Text="0 cards answered"
+                                           FontSize="12" TextColor="Black"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </VerticalStackLayout>
+                        <Border Grid.Column="1" StrokeShape="RoundRectangle 60" StrokeThickness="0"
+                                BackgroundColor="#FFFFFFFF" WidthRequest="78" HeightRequest="78"
+                                VerticalOptions="Center">
+                            <Label Text="🚀" FontSize="36"
+                                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,16">
+                    <VerticalStackLayout Grid.Column="0" Spacing="2" VerticalOptions="Center">
+                        <Label Text="My Decks" FontSize="20" FontAttributes="Bold"
+                               FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray900}"/>
+                        <Label Text="Tap a deck to start studying" FontSize="13"
+                               TextColor="{StaticResource Gray500}"/>
+                    </VerticalStackLayout>
+                    <Button Grid.Column="1" x:Name="AddDeckBtn" Text="+ New Deck"
+                            FontSize="13" FontAttributes="Bold" FontFamily="OpenSansSemibold"
+                            BackgroundColor="{StaticResource Primary}" TextColor="White"
+                            CornerRadius="22" Padding="16,10"
+                            VerticalOptions="Center" Clicked="OnAddDeckClicked"/>
+                </Grid>
+
+                <VerticalStackLayout x:Name="DecksContainer" Spacing="12"/>
+
+                <Border x:Name="EmptyStateCard" IsVisible="True"
+                        StrokeShape="RoundRectangle 24" StrokeThickness="1.5"
+                        Stroke="{StaticResource Gray200}" BackgroundColor="White"
+                        Padding="32,36" Margin="0,8,0,0">
+                    <VerticalStackLayout Spacing="14" HorizontalOptions="Center">
+                        <Label Text="📚" FontSize="48" HorizontalTextAlignment="Center"/>
+                        <Label Text="No decks yet" FontSize="18" FontAttributes="Bold"
+                               FontFamily="OpenSansSemibold" TextColor="{StaticResource Gray600}"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Create your first deck and start learning in just a few taps."
+                               FontSize="14" TextColor="{StaticResource Gray400}"
+                               HorizontalTextAlignment="Center" LineBreakMode="WordWrap"
+                               MaxLines="2"/>
+                        <Button Text="Create First Deck" BackgroundColor="{StaticResource Primary}"
+                                TextColor="White" CornerRadius="24" Padding="28,13"
+                                FontAttributes="Bold" FontSize="14" FontFamily="OpenSansSemibold"
+                                Clicked="OnAddDeckClicked"
+                                HorizontalOptions="Center" Margin="0,6,0,0"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
